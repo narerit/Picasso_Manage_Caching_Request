@@ -9,17 +9,21 @@ import android.widget.GridView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
+/**
+ * Created by Narerit on 7/19/2019.
+ */
+//TODO 8 : Implement OnScrollListener for listen to user scrolling.
 public class GalleryActivity extends AppCompatActivity implements AbsListView.OnScrollListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
-
+        //TODO 1 : Create array to store urls.
         ArrayList<String> imageUrls = new ArrayList<>();
         String baseUrl = "https://images.pexels.com/photos/";
         String compressUrl = "?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+        //TODO 2 : Add image urls.
         imageUrls.add(baseUrl+"415829/pexels-photo-415829.jpeg"+compressUrl);
         imageUrls.add(baseUrl+"712513/pexels-photo-712513.jpeg"+compressUrl);
         imageUrls.add(baseUrl+"769584/pexels-photo-769584.jpeg"+compressUrl);
@@ -28,7 +32,7 @@ public class GalleryActivity extends AppCompatActivity implements AbsListView.On
         imageUrls.add(baseUrl+"821413/pexels-photo-821413.jpeg"+compressUrl);
         imageUrls.add(baseUrl+"89779/girl-rustic-grass-meadow-89779.jpeg"+compressUrl);
         imageUrls.add(baseUrl+"1917785/pexels-photo-1917785.jpeg"+compressUrl);
-
+        //TODO 3 : Set wrong url to see our error placeholder.
         imageUrls.add(baseUrl+"wrong url here");
         imageUrls.add(baseUrl+"wrong url here");
         imageUrls.add(baseUrl+"wrong url here");
@@ -61,13 +65,16 @@ public class GalleryActivity extends AppCompatActivity implements AbsListView.On
         imageUrls.add(baseUrl+"789822/pexels-photo-789822.jpeg"+compressUrl);
         imageUrls.add(baseUrl+"1102341/pexels-photo-1102341.jpeg"+compressUrl);
         imageUrls.add(baseUrl+"247322/pexels-photo-247322.jpeg"+compressUrl);
-
+        //TODO 4 : Bind our GridView to GridView Layout
         GridView gridGallery = findViewById(R.id.grid_gallery);
+        //TODO 5 : Call Gallery Adapter. Passing array and grid item layout as arguments.
         GalleryAdapter galleryAdapter = new GalleryAdapter(this, R.layout.gallery_item_layout, imageUrls);
+        //TODO 6 : Binding adapter to grid view. This adapter will use to call image from an array of url.
         gridGallery.setAdapter(galleryAdapter);
+        //TODO 7 : Bind scroll listener with grid view. This listener will use to tell picasso when to download images.
         gridGallery.setOnScrollListener(this);
     }
-
+    //TODO 9 : Set Picasso tag to pause download when user scrolling and resume when user stop scrolling.
     @Override
     public void onScrollStateChanged(AbsListView absListView, int scrollState) {
         if (scrollState == SCROLL_STATE_IDLE || scrollState == SCROLL_STATE_TOUCH_SCROLL){

@@ -28,17 +28,19 @@ public class GalleryAdapter extends ArrayAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null){
+    public View getView(int position, View imageView, ViewGroup parent) {
+        //TODO 1 : Inflate our imageView for gallery
+        if (imageView == null){
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-            convertView = inflater.inflate(layoutResourceId,parent,false);
+            imageView = inflater.inflate(layoutResourceId,parent,false);
         }
+        //TODO 2 : Load images from url in array we passed.
         Picasso.get().load(this.data.get(position))
-                .fit().centerCrop()
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.error_placeholder)
-                .tag("gallery")
-                .into((ImageView) convertView);
-        return convertView;
+                .fit().centerCrop() //TODO 3 : Set image as fit and crop only center.
+                .placeholder(R.drawable.placeholder) //TODO 4 : Set placeholder to show before load finish.
+                .error(R.drawable.error_placeholder) //TODO 5 : Set error placeholder for our wrong url.
+                .tag("gallery") //TODO 6 : set tag for our onScroll listener.
+                .into((ImageView) imageView);
+        return imageView;
     }
 }
