@@ -1,4 +1,4 @@
-package com.example.picassoexample;
+package com.example.picassodemo;
 
 import org.junit.Test;
 

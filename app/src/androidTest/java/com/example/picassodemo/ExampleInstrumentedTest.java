@@ -1,4 +1,4 @@
-package com.example.picassoexample;
+package com.example.picassodemo;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.picassoexample", appContext.getPackageName());
+        assertEquals("com.example.picassodemo", appContext.getPackageName());
     }
 }
