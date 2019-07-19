@@ -33,7 +33,12 @@ public class GalleryAdapter extends ArrayAdapter {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
             convertView = inflater.inflate(layoutResourceId,parent,false);
         }
-        Picasso.get().load(this.data.get(position)).fit().centerCrop().into((ImageView) convertView);
+        Picasso.get().load(this.data.get(position))
+                .fit().centerCrop()
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.error_placeholder)
+                .tag("gallery")
+                .into((ImageView) convertView);
         return convertView;
     }
 }

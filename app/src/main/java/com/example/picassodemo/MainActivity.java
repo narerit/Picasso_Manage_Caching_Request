@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.net.URL;
@@ -22,7 +24,12 @@ public class MainActivity extends AppCompatActivity {
         Button btnGallery = findViewById(R.id.btn_gallery);
         String imageUrl = "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
         Picasso.get().setLoggingEnabled(true);
-        Picasso.get().load(imageUrl).fit().into(banner);
+        Picasso.get().setIndicatorsEnabled(true);
+
+        Picasso.get().load(imageUrl)
+                .memoryPolicy(MemoryPolicy.NO_CACHE,MemoryPolicy.NO_STORE)
+                .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
+                .fit().into(banner);
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
